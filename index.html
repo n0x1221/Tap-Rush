@@ -10,11 +10,18 @@
 
   <div id="hud">
     Score: <span id="score">0</span> |
+    Level: <span id="level">1</span> |
     Time: <span id="time">30</span>
   </div>
 
   <div id="game-area">
     <div id="target"></div>
+  </div>
+
+  <div id="game-over" style="display:none;">
+    <h1>Game Over</h1>
+    <p>Final Score: <span id="final-score"></span></p>
+    <button onclick="restartGame()">Restart</button>
   </div>
 
   <script src="script.js"></script>
