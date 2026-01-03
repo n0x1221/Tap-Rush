@@ -7,8 +7,23 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Tap Rush</h1>
-  <p>If you see this page, GitHub Pages is working.</p>
+  <div id="hud">
+    <div>Score: <span id="score">0</span></div>
+    <div>Level: <span id="level">1</span></div>
+    <div>Time: <span id="time">30</span></div>
+    <div>Lives: ❤️ <span id="lives">3</span></div>
+    <div>High: <span id="high">0</span></div>
+  </div>
+
+  <div id="game-area">
+    <div id="target"></div>
+  </div>
+
+  <div id="game-over" class="hidden">
+    <h1>Game Over</h1>
+    <p>Final Score: <span id="final-score"></span></p>
+    <button onclick="restartGame()">Restart</button>
+  </div>
 
   <script src="script.js"></script>
 </body>
