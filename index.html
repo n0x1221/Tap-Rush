@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tap Rush</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json">
 </head>
 <body>
 
@@ -14,14 +15,17 @@
     Time: <span id="time">30</span>
   </div>
 
+  <!-- Ad placeholder -->
+  <div id="ad-container">Ad</div>
+
   <div id="game-area">
     <div id="target"></div>
   </div>
 
-  <div id="game-over" style="display:none;">
+  <div id="game-over" class="hidden">
     <h1>Game Over</h1>
-    <p>Final Score: <span id="final-score"></span></p>
-    <button onclick="restartGame()">Restart</button>
+    <p>Final Score: <span id="final-score">0</span></p>
+    <button id="restart-btn">Restart</button>
   </div>
 
   <script src="script.js"></script>
