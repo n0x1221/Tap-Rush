@@ -10,20 +10,22 @@ const levelEl = document.getElementById("level");
 const timeEl = document.getElementById("time");
 const gameOverScreen = document.getElementById("game-over");
 const finalScoreEl = document.getElementById("final-score");
+const restartBtn = document.getElementById("restart-btn");
 
 function moveTarget() {
-  const maxX = gameArea.clientWidth - 80;
-  const maxY = gameArea.clientHeight - 80;
-
+  const maxX = gameArea.clientWidth - 70;
+  const maxY = gameArea.clientHeight - 70;
   target.style.left = Math.random() * maxX + "px";
   target.style.top = Math.random() * maxY + "px";
 }
 
-target.addEventListener("click", () => {
+target.addEventListener("click", (e) => {
+  e.stopPropagation();
   if (gameOver) return;
 
   score++;
   level = Math.floor(score / 5) + 1;
+
   scoreEl.textContent = score;
   levelEl.textContent = level;
 
@@ -33,8 +35,8 @@ target.addEventListener("click", () => {
 function endGame() {
   gameOver = true;
   target.style.display = "none";
-  gameOverScreen.style.display = "flex";
   finalScoreEl.textContent = score;
+  gameOverScreen.classList.remove("hidden");
 }
 
 function restartGame() {
@@ -47,22 +49,20 @@ function restartGame() {
   levelEl.textContent = level;
   timeEl.textContent = timeLeft;
 
-  gameOverScreen.style.display = "none";
+  gameOverScreen.classList.add("hidden");
   target.style.display = "block";
   moveTarget();
 }
 
-// Timer countdown
+restartBtn.addEventListener("click", restartGame);
+
 setInterval(() => {
   if (!gameOver) {
-    if (timeLeft > 0) {
-      timeLeft--;
-      timeEl.textContent = timeLeft;
-    } else {
-      endGame();
-    }
+    timeLeft--;
+    timeEl.textContent = timeLeft;
+    if (timeLeft <= 0) endGame();
   }
 }, 1000);
 
-// Initial target placement
+// Start
 moveTarget();
