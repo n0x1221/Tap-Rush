@@ -2,32 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tap Rush</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+  <title>Color Connect</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#111" />
+
+  <!-- iOS support -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-mobile-web-app-title" content="Color Connect" />
+  <link rel="apple-touch-icon" href="icon.png" />
+
   <link rel="stylesheet" href="style.css" />
-  <link rel="manifest" href="manifest.json">
 </head>
 <body>
+  <div id="status"></div>
+  <canvas id="gameCanvas" width="400" height="400"></canvas>
 
-  <div id="hud">
-    Score: <span id="score">0</span> |
-    Level: <span id="level">1</span> |
-    Time: <span id="time">30</span>
-  </div>
-
-  <!-- Ad placeholder -->
-  <div id="ad-container">Ad</div>
-
-  <div id="game-area">
-    <div id="target"></div>
-  </div>
-
-  <div id="game-over" class="hidden">
-    <h1>Game Over</h1>
-    <p>Final Score: <span id="final-score">0</span></p>
-    <button id="restart-btn">Restart</button>
-  </div>
-
-  <script src="script.js"></script>
+  <script src="game.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js");
+    }
+  </script>
 </body>
 </html>
